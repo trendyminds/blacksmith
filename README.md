@@ -94,13 +94,15 @@ The GitHub Action comes with a number of options that have sensible defaults:
     path: ${{ secrets.BLACKSMITH_PATH }}
 ```
 
-- `event`: [Required] - The type of action being ran
-- `app_name`: [Required] - The name of the app to use for the domain, database, etc.
-- `pr_number`: [Required] - The PR number for the review app
-- `php_version`: [Default: php83] - Which version of PHP to use for your app
-- `doc_root`: [Default: /public] - The document root of your application
-- `aliases`: Other domains that should also point to the site
-- `user`: [Default: forge] - The SSH user to use for the connection
-- `host`: [Required] - The host address to use for the connection
-- `key`: [Required] - The SSH key to use for the connection
-- `path`: [Required] - The path to the Blacksmith app on the server
+| Option       | Required | Default | Description                                               |
+|--------------|----------|---------|-----------------------------------------------------------|
+| event        | `true`   |         | The type of action being ran                              |
+| app_name     | `true`   |         | The name of the app to use for the domain, database, etc. |
+| pr_number    | `true`   |         | The PR number for the review app                          |
+| php_version  | `false`  | php83   | Which version of PHP to use for your app                  |
+| doc_root     | `false`  | /public | The document root of your application                     |
+| aliases      | `false`  |         | Other domains that should also point to the site          |
+| user         | `false`  | forge   | The SSH user to use for the connection                    |
+| host         | `true`   |         | The host address to use for the connection                |
+| key          | `true`   |         | The SSH key to use for the connection                     |
+| path         | `true`   |         | The path to the Blacksmith app on the server              |
