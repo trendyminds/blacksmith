@@ -24,7 +24,7 @@ If you want to utilize Blacksmith you'll need:
 
 ## 📦 Install
 
-1. Deploy Blacksmith to your Forge server
+1. Deploy the Blacksmith Laravel application to your Forge server
 2. Setup the required `.env` variables:
 
 ```env
@@ -41,3 +41,38 @@ FORGE_REVIEW_APP_DOMAIN=
 FORGE_MYSQL_USER=
 FORGE_MYSQL_PASSWORD=
 ```
+
+3. Setup your repo to have a `.github/workflows/sandbox.yml` file and use the following:
+
+```yaml
+name: Sandbox
+
+on: [pull_request]
+
+env:
+  APP_NAME: myapp
+
+jobs:
+  sandbox:
+    if: contains(github.event.pull_request.labels.*.name, 'sandbox')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: trendyminds/github-actions-blacksmith@main
+        with:
+          app_name: ${{ env.APP_NAME }}
+          doc_root: /web
+          host: ${{ secrets.BLACKSMITH_HOST }}
+          key: ${{ secrets.BLACKSMITH_SSH_KEY }}
+          path: ${{ secrets.BLACKSMITH_PATH }}
+
+      - uses: trendyminds/github-actions-blacksmith@main
+        if: github.event.action == 'closed'
+        with:
+          app_name: ${{ env.APP_NAME }}
+          event: close
+          host: ${{ secrets.BLACKSMITH_HOST }}
+          key: ${{ secrets.BLACKSMITH_SSH_KEY }}
+          path: ${{ secrets.BLACKSMITH_PATH }}
+```
+
+4. When you label your pull request with "sandbox" Blacksmith will now provision your sandbox environment.
