@@ -73,7 +73,7 @@ class CreateSandbox extends Command
             // If a seed database exists, seed the database
             $this->info('🌱 Seeding the database (if seed.db file exists)');
             $forge->executeSiteCommand($serverId, $site->id, [
-                'command' => "[[ -f /home/forge/configs/{$appName}/seed.db ]] && mysql {$appName}_{$prNumber} < /home/forge/configs/blk/seed.db",
+                'command' => "[[ -f /home/forge/configs/{$appName}/seed.db ]] && mysql {$appName}_{$prNumber} < /home/forge/configs/{$appName}/seed.db",
             ]);
 
             // Mount the Git repository and branch
