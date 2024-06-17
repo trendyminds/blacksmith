@@ -6,7 +6,7 @@ Blacksmith is a convention-first review app initializer for Laravel Forge.
 
 ## ✅ What Blacksmith does
 
-When you trigger the Blacksmith GitHub action for your pull request a review app will be setup using a combination of your app name, the pull request number, and your wildcard domain (Ex: mysite-123.domain.com). Blacksmith will setup the following for each sandbox:
+When you trigger the [Blacksmith GitHub action](https://github.com/trendyminds/github-actions-blacksmith) for your pull request a review app will be setup using a combination of your app name, the pull request number, and your wildcard domain (Ex: mysite-123.domain.com). Blacksmith will setup the following for each sandbox:
 
 - A new Forge site on your designated server
 - A connection to your repo/branch for quick deployments
@@ -76,7 +76,7 @@ jobs:
 
 ## 🔧 Options
 
-The GitHub Action comes with a number of options that have sensible defaults:
+The [GitHub Action](https://github.com/trendyminds/github-actions-blacksmith) comes with a number of options that have sensible defaults:
 
 ```yaml
 - uses: trendyminds/github-actions-blacksmith@main
