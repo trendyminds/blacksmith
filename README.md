@@ -13,6 +13,7 @@ When you trigger the Blacksmith GitHub action for your pull request a review app
 - A database (can be seeded)
 - A Let's Encrypt SSL
 - Robots.txt disabling crawlers
+- **On close:** Triages the sandbox to be deleted after 24 hours
 
 ## 🧾 Requirements
 
