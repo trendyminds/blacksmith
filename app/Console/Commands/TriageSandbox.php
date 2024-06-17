@@ -31,5 +31,7 @@ class TriageSandbox extends Command
         Triage::create([
             'name' => $this->argument('app_name').'-'.$this->argument('pr_number'),
         ]);
+
+        $this->info("⏳ Sandbox triaged for deletion. It will be deleted after 24 hours.");
     }
 }
