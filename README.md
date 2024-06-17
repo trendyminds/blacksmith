@@ -42,7 +42,9 @@ FORGE_MYSQL_USER=
 FORGE_MYSQL_PASSWORD=
 ```
 
-3. Setup your repo to have a `.github/workflows/sandbox.yml` file and use the following:
+3. Verify your Blacksmith homepage is being reported as "Online"
+4. Ensure `php artisan schedule:run` runs every minute
+5. Setup your repo to have a `.github/workflows/sandbox.yml` file and use the following:
 
 ```yaml
 name: Sandbox
