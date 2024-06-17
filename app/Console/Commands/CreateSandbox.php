@@ -20,7 +20,8 @@ class CreateSandbox extends Command
                             {--repo= : The organization/repo-name for mounting the app on Forge}
                             {--branch= : The branch to deploy}
                             {--post_deploy= : The post-deploy commands to run after deployment}
-                            {--alias=* : Any other domains that should be used for the site}';
+                            {--alias=* : Any other domains that should be used for the site}
+                            {--disable_ssl : Disable SSL for the site}';
 
     /**
      * The console command description.
@@ -100,8 +101,10 @@ class CreateSandbox extends Command
             $forge->executeSiteCommand($serverId, $site->id, ['command' => $commands]);
 
             // Setup a Let's Encrypt SSL
-            $this->info('🔒 Installing SSL');
-            $forge->obtainLetsEncryptCertificate($serverId, $site->id, ['domains' => [$domain, ...$aliases]], false);
+            if (! $this->option('disable_ssl')) {
+                $this->info('🔒 Installing SSL');
+                $forge->obtainLetsEncryptCertificate($serverId, $site->id, ['domains' => [$domain, ...$aliases]], false);
+            }
 
             // Adding post-deploy commands
             $postDeployScript = "/home/forge/configs/{$appName}/post-deploy.sh";

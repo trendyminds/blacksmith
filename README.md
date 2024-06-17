@@ -89,6 +89,7 @@ The [GitHub Action](https://github.com/trendyminds/github-actions-blacksmith) co
     aliases: |
         test.domain.com
         another.domain.com
+    disable_ssl: true
     user: myuser
     host: ${{ secrets.BLACKSMITH_HOST }}
     key: ${{ secrets.BLACKSMITH_SSH_KEY }}
@@ -103,6 +104,7 @@ The [GitHub Action](https://github.com/trendyminds/github-actions-blacksmith) co
 | php_version  | `false`  | php83   | Which version of PHP to use for your app                  |
 | doc_root     | `false`  | /public | The document root of your application                     |
 | aliases      | `false`  |         | Other domains that should also point to the site          |
+| disable_ssl  | `false`  | `false` | Skips adding an SSL to the sandbox                        |
 | user         | `false`  | forge   | The SSH user to use for the connection                    |
 | host         | `true`   |         | The host address to use for the connection                |
 | key          | `true`   |         | The SSH key to use for the connection                     |
