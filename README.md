@@ -49,7 +49,9 @@ FORGE_MYSQL_PASSWORD=
 ```yaml
 name: Sandbox
 
-on: [pull_request]
+on:
+  pull_request:
+    types: [synchronize, labeled, closed]
 
 env:
   APP_NAME: myapp
