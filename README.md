@@ -72,3 +72,35 @@ jobs:
 ```
 
 4. When you label your pull request with "sandbox" Blacksmith will now provision your sandbox environment.
+
+## 🔧 Options
+
+The GitHub Action comes with a number of options that have sensible defaults:
+
+```yaml
+- uses: trendyminds/github-actions-blacksmith@main
+  with:
+    event: ${{ github.event.action }}
+    app_name: ${{ env.APP_NAME }}
+    pr_number: ${{ github.event.pull_request.number }}
+    php_version: php82
+    doc_root: /web
+    aliases: |
+        test.domain.com
+        another.domain.com
+    user: myuser
+    host: ${{ secrets.BLACKSMITH_HOST }}
+    key: ${{ secrets.BLACKSMITH_SSH_KEY }}
+    path: ${{ secrets.BLACKSMITH_PATH }}
+```
+
+- `event`: [Required] - The type of action being ran
+- `app_name`: [Required] - The name of the app to use for the domain, database, etc.
+- `pr_number`: [Required] - The PR number for the review app
+- `php_version`: [Default: php83] - Which version of PHP to use for your app
+- `doc_root`: [Default: /public] - The document root of your application
+- `aliases`: Other domains that should also point to the site
+- `user`: [Default: forge] - The SSH user to use for the connection
+- `host`: [Required] - The host address to use for the connection
+- `key`: [Required] - The SSH key to use for the connection
+- `path`: [Required] - The path to the Blacksmith app on the server
