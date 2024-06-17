@@ -64,7 +64,7 @@ jobs:
       - uses: trendyminds/github-actions-blacksmith@main
         with:
           app_name: ${{ env.APP_NAME }}
-          doc_root: /web
+          pr_number: ${{ github.event.pull_request.number }}
           event: ${{ github.event.action }}
           host: ${{ secrets.BLACKSMITH_HOST }}
           key: ${{ secrets.BLACKSMITH_SSH_KEY }}
