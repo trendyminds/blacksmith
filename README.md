@@ -51,7 +51,7 @@ name: Sandbox
 
 on:
   pull_request:
-    types: [synchronize, labeled, closed]
+    types: [synchronize, labeled, closed, reopened]
 
 env:
   APP_NAME: myapp
@@ -65,15 +65,7 @@ jobs:
         with:
           app_name: ${{ env.APP_NAME }}
           doc_root: /web
-          host: ${{ secrets.BLACKSMITH_HOST }}
-          key: ${{ secrets.BLACKSMITH_SSH_KEY }}
-          path: ${{ secrets.BLACKSMITH_PATH }}
-
-      - uses: trendyminds/github-actions-blacksmith@main
-        if: github.event.action == 'closed'
-        with:
-          app_name: ${{ env.APP_NAME }}
-          event: close
+          event: ${{ github.event.action }}
           host: ${{ secrets.BLACKSMITH_HOST }}
           key: ${{ secrets.BLACKSMITH_SSH_KEY }}
           path: ${{ secrets.BLACKSMITH_PATH }}
