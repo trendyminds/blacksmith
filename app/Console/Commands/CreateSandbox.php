@@ -53,6 +53,10 @@ class CreateSandbox extends Command
             if ($site) {
                 $this->info("🌐 Skipping creation. Site already exists: $domain");
 
+                // Trigger a deploy
+                $this->info('🚀 Deploying the site');
+                $site->deploySite();
+
                 return;
             }
 
@@ -86,7 +90,7 @@ class CreateSandbox extends Command
                     'composer' => false,
                     'database' => null,
                     'migrate' => false,
-                ])->enableQuickDeploy();
+                ]);
             }
 
             // Copy over the required files
@@ -119,8 +123,8 @@ class CreateSandbox extends Command
                 $site->updateDeploymentScript($script);
             }
 
-            // Trigger the first deploy
-            $this->info('🚀 Deploying the site. All future deploys will be done by Forge.');
+            // Trigger a deploy
+            $this->info('🚀 Deploying the site');
             $site->deploySite();
         } catch (\Exception $e) {
             $this->error("❌ Could not create site: $domain");
