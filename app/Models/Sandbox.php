@@ -17,7 +17,7 @@ class Sandbox extends Model
     protected $guarded = [];
 
     protected $casts = [
-        'aliases' => 'collection',
+        'aliases' => 'array',
         'ssl' => 'boolean',
     ];
 
@@ -51,6 +51,16 @@ class Sandbox extends Model
             get: fn (mixed $value, array $attributes) => (
                 $attributes['app_name'].'_'.$attributes['pr_number']
             ),
+        );
+    }
+
+    /**
+     * The path to the config directory for this site
+     */
+    protected function configDirectory(): Attribute
+    {
+        return Attribute::make(
+            get: fn (mixed $value, array $attributes) => '/home/forge/configs/'.$attributes['app_name'],
         );
     }
 

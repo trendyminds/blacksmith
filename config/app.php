@@ -124,11 +124,11 @@ return [
     ],
 
     'forge' => [
-        'token' => env('FORGE_TOKEN', ''),
-        'server_id' => env('FORGE_SERVER_ID', ''),
-        'mysql_user' => env('FORGE_MYSQL_USER', ''),
-        'mysql_password' => env('FORGE_MYSQL_PASSWORD', ''),
-        'review_app_domain' => env('FORGE_REVIEW_APP_DOMAIN', ''),
+        'token' => env('FORGE_TOKEN'),
+        'server_id' => env('FORGE_SERVER_ID'),
+        'mysql_user' => env('FORGE_MYSQL_USER'),
+        'mysql_password' => env('FORGE_MYSQL_PASSWORD'),
+        'review_app_domain' => env('FORGE_REVIEW_APP_DOMAIN'),
     ],
 
 ];
