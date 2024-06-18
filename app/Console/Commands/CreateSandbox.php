@@ -128,7 +128,7 @@ class CreateSandbox extends Command
             $site->deploySite();
         } catch (\Exception $e) {
             $this->error("❌ Could not create site: $domain");
-            $this->error($e);
+            throw new \Exception($e);
         }
     }
 }
